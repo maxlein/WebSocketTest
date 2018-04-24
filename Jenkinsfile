@@ -6,5 +6,10 @@ pipeline {
         sh 'mkdir build && cd build && cmake .. && make'
       }
     }
+    stage('Test') {
+      steps {
+        sh 'cd build && tests/testfoo --gtest_output="xml:testresults.xml"'
+      }
+    }
   }
 }
