@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh ' tests/testfoo --gtest_output="xml:testresults.xml" && mkdir reports && mv testresults.xml reports/ '
+        sh ' cd build && tests/testfoo --gtest_output="xml:testresults.xml" && mkdir reports && mv testresults.xml reports/ '
       }
     }
   }
