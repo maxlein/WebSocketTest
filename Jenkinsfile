@@ -1,13 +1,10 @@
 #!/usr/bin/env groovy
 
-def projectProperties = [
-        [$class: 'BuildDiscarderProperty',strategy: [$class: 'LogRotator', numToKeepStr: '5']],
-]
-
-properties(projectProperties)
-
 pipeline {
   agent any
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+    }
   stages {
       stage('Clean workspace') {
           steps {
