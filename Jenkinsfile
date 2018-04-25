@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Artifact') {
       steps {
-        archiveArtifacts(onlyIfSuccessful: true, artifacts: 'ws_client ws_server')
+        archiveArtifacts(onlyIfSuccessful: true, artifacts: 'build/bin/*')
       }
     }
   }
