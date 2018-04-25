@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/testfoo.dir/dummytest.cpp.o CMakeFiles/testfoo.dir/main.cpp.o  -o testfoo -rdynamic ../gtest/src/gtest-build/googlemock/gtest/libgtest.a ../gtest/src/gtest-build/googlemock/libgmock.a -lpthread 
