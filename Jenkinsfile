@@ -9,7 +9,7 @@ pipeline {
     stage('Test') {
       steps {
         sh "echo 'pwd: $pwd' > result"
-        def output=readFile('result').trim()
+        output=readFile('result').trim()
         echo "output=$output"
         echo 'ls: $(ls)'
         sh ' cd build && tests/testfoo --gtest_output="xml:testresults.xml" && mkdir reports && mv testresults.xml reports/ '
