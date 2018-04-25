@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Code Analysis') {
           steps {
-            sh '''cppcheck --xml --xml-version=2 . 2> build/reports/cppcheck.xml
+            sh '''cppcheck --xml --xml-version=2 --enable=all --inconclusive --language=c++ *.cpp 2> build/reports/cppcheck.xml
 '''
           }
         }
