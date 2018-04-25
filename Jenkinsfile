@@ -12,6 +12,11 @@ pipeline {
               sh 'ls -lah'
           }
       }
+      stage('Checkout source') {
+          steps {
+              checkout scm
+          }
+      }
     stage('Build') {
       steps {
         sh 'mkdir build && cd build && cmake .. && make'
