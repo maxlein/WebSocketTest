@@ -1,3 +1,11 @@
+#!/usr/bin/env groovy
+
+def projectProperties = [
+        [$class: 'BuildDiscarderProperty',strategy: [$class: 'LogRotator', numToKeepStr: '5']],
+]
+
+properties(projectProperties)
+
 pipeline {
   agent any
   stages {
@@ -19,7 +27,9 @@ pipeline {
       }
     stage('Build') {
       steps {
-        sh 'mkdir -p build && cd build && cmake .. && make'
+          timeout(30) {
+              sh 'mkdir -p build && cd build && cmake .. && make'
+          }
       }
     }
     stage('Test') {
