@@ -1,10 +1,5 @@
-#!groovy​
-
 pipeline {
   agent any
-  options {
-        timeout(time: 1, unit: 'HOURS') 
-  }
   stages {
     stage('Build') {
       steps {
@@ -13,12 +8,15 @@ pipeline {
     }
     stage('Test') {
       steps {
+        echo 'pwd: $pwd'
+        echo 'ls: $(ls)'
         sh ' cd build && tests/testfoo --gtest_output="xml:testresults.xml" && mkdir reports && mv testresults.xml reports/ '
+        echo 'ls: $(ls)'
       }
     }
     stage('Artifact') {
       steps {
-          echo 'current folder: $pwd'
+        echo 'current folder: $pwd'
         archiveArtifacts(onlyIfSuccessful: true, artifacts: 'build/bin/*, bin/*')
       }
     }
@@ -29,5 +27,8 @@ pipeline {
 
     }
 
+  }
+  options {
+    timeout(time: 1, unit: 'HOURS')
   }
 }
