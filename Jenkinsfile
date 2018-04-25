@@ -8,8 +8,8 @@ pipeline {
     }
     stage('Test') {
       steps {
-        echo 'pwd: $pwd'
-        echo 'ls: $(ls)'
+        echo 'pwd: ${pwd}'
+        echo 'ls: ${ls}'
         sh ' cd build && tests/testfoo --gtest_output="xml:testresults.xml" && mkdir reports && mv testresults.xml reports/ '
         echo 'ls: $(ls)'
       }
