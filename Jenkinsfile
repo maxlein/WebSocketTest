@@ -1,6 +1,14 @@
 pipeline {
   agent any
   stages {
+      stage('Clean workspace') {
+          /* Running on a fresh Docker instance makes this redundant, but just in
+          * case the host isn't configured to give us a new Docker image for every
+          * build, make sure we clean things before we do anything
+          */
+          deleteDir()
+          sh 'ls -lah'
+      }
     stage('Build') {
       steps {
         sh 'mkdir build && cd build && cmake .. && make'
@@ -14,6 +22,8 @@ pipeline {
     }
     stage('Artifact') {
       steps {
+          def workspace = pwd()
+          echo "\u2600 workspace=${workspace}"
         archiveArtifacts(onlyIfSuccessful: true, artifacts: 'build/bin/*, bin/*')
       }
     }
