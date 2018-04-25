@@ -2,6 +2,9 @@
 
 pipeline {
   agent any
+  options {
+        timeout(time: 1, unit: 'HOURS') 
+  }
   stages {
     stage('Build') {
       steps {
@@ -15,7 +18,8 @@ pipeline {
     }
     stage('Artifact') {
       steps {
-        archiveArtifacts(onlyIfSuccessful: true, artifacts: 'build/bin/*')
+          echo 'current folder: $pwd'
+        archiveArtifacts(onlyIfSuccessful: true, artifacts: 'build/bin/*, bin/*')
       }
     }
   }
