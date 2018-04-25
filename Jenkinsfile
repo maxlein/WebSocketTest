@@ -1,33 +1,23 @@
-#!/usr/bin/env groovy
-
 pipeline {
   agent any
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
-        timeout(time: 1, unit: 'HOURS')
-    }
   stages {
-      stage('Clean workspace') {
-          steps {
-              /* Running on a fresh Docker instance makes this redundant, but just in
-          * case the host isn't configured to give us a new Docker image for every
-          * build, make sure we clean things before we do anything
-          */
-
-              deleteDir()
-              sh 'ls -lah'
-          }
+    stage('Clean workspace') {
+      steps {
+        deleteDir()
+        sh 'ls -lah'
       }
-      stage('Checkout source') {
-          steps {
-              checkout scm
-          }
+    }
+    stage('Checkout source') {
+      steps {
+        checkout scm
       }
+    }
     stage('Build') {
       steps {
-          timeout(30) {
-              sh 'mkdir -p build && cd build && cmake .. && make'
-          }
+        timeout(time: 30) {
+          sh 'mkdir -p build && cd build && cmake .. && make'
+        }
+
       }
     }
     stage('Test') {
@@ -37,9 +27,19 @@ pipeline {
       }
     }
     stage('Artifact') {
-      steps {
-          sh 'ls -lah'
-        archiveArtifacts(onlyIfSuccessful: true, artifacts: 'build/bin/*, bin/*')
+      parallel {
+        stage('Artifact') {
+          steps {
+            sh 'ls -lah'
+            archiveArtifacts(onlyIfSuccessful: true, artifacts: 'build/bin/*, bin/*')
+          }
+        }
+        stage('Code Analysis') {
+          steps {
+            sh '''cppcheck --xml --xml-version=2 SOURCE_DIRECTORY 2> cppcheck.xml
+'''
+          }
+        }
       }
     }
   }
@@ -49,5 +49,9 @@ pipeline {
 
     }
 
+  }
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+    timeout(time: 1, unit: 'HOURS')
   }
 }
