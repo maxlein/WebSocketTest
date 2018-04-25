@@ -19,7 +19,7 @@ pipeline {
       }
     stage('Build') {
       steps {
-        sh 'mkdir build && cd build && cmake .. && make'
+        sh 'mkdir -p build && cd build && cmake .. && make'
       }
     }
     stage('Test') {
