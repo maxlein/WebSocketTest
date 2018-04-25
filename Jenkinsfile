@@ -11,10 +11,17 @@ pipeline {
         sh ' cd build && tests/testfoo --gtest_output="xml:testresults.xml" && mkdir reports && mv testresults.xml reports/ '
       }
     }
+    stage('Artifact') {
+      steps {
+        archiveArtifacts(onlyIfSuccessful: true, artifacts: 'ws_client ws_server')
+      }
+    }
   }
   post {
-        always {
-            junit 'build/reports/*.xml'
-        }
+    always {
+      junit 'build/reports/*.xml'
+
+    }
+
   }
 }
