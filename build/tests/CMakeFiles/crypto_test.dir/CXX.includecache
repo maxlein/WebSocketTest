@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+..//crypto.hpp
+cmath
+-
+iomanip
+-
+istream
+-
+sstream
+-
+string
+-
+vector
+-
+openssl/buffer.h
+-
+openssl/evp.h
+-
+openssl/md5.h
+-
+openssl/sha.h
+-
+
+/home/kin/sandbox/WebSocketTest/tests/crypto_test.cpp
+cassert
+-
+vector
+-
+crypto.hpp
+/home/kin/sandbox/WebSocketTest/tests/crypto.hpp
+

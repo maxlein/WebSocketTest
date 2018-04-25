@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/ws_server.dir/ws_server.cpp.o  -o bin/ws_server -rdynamic -lpthread -lboost_system -lboost_thread -lboost_coroutine -lboost_context -lboost_chrono -lboost_date_time -lboost_atomic -lpthread -lssl -lcrypto 

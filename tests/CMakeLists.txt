@@ -23,6 +23,11 @@ target_link_libraries(testfoo
     libgtest
     libgmock
 )
-add_test(testfoo testfoo)
+add_test(testfoo testfoo) 
 
-install(TARGETS testfoo DESTINATION bin)
+set_target_properties( testfoo crypto_test
+    PROPERTIES
+    ARCHIVE_OUTPUT_DIRECTORY "${UNIT_TEST_BIN_OUTPUT_DIR}"
+    LIBRARY_OUTPUT_DIRECTORY "${UNIT_TEST_BIN_OUTPUT_DIR}"
+    RUNTIME_OUTPUT_DIRECTORY "${UNIT_TEST_BIN_OUTPUT_DIR}"
+)

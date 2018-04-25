@@ -1,0 +1,5 @@
+parse_test 0 0
+crypto_test 1 0.052192
+testfoo 1 0.0212169
+---
+parse_test

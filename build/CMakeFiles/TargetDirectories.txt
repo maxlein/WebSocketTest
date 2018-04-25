@@ -1,0 +1,13 @@
+/home/kin/sandbox/WebSocketTest/build/CMakeFiles/test.dir
+/home/kin/sandbox/WebSocketTest/build/CMakeFiles/edit_cache.dir
+/home/kin/sandbox/WebSocketTest/build/CMakeFiles/wss_examples.dir
+/home/kin/sandbox/WebSocketTest/build/CMakeFiles/ws_client.dir
+/home/kin/sandbox/WebSocketTest/build/CMakeFiles/rebuild_cache.dir
+/home/kin/sandbox/WebSocketTest/build/CMakeFiles/gtest.dir
+/home/kin/sandbox/WebSocketTest/build/CMakeFiles/ws_server.dir
+/home/kin/sandbox/WebSocketTest/build/tests/CMakeFiles/test.dir
+/home/kin/sandbox/WebSocketTest/build/tests/CMakeFiles/edit_cache.dir
+/home/kin/sandbox/WebSocketTest/build/tests/CMakeFiles/parse_test.dir
+/home/kin/sandbox/WebSocketTest/build/tests/CMakeFiles/crypto_test.dir
+/home/kin/sandbox/WebSocketTest/build/tests/CMakeFiles/testfoo.dir
+/home/kin/sandbox/WebSocketTest/build/tests/CMakeFiles/rebuild_cache.dir
