@@ -1,5 +1,10 @@
 pipeline {
   agent any
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+        timeout(time: 1, unit: 'HOURS')
+        skipStagesAfterUnstable()
+    }
   stages {
     stage('Clean workspace') {
       steps {
