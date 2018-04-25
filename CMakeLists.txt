@@ -81,8 +81,12 @@ target_include_directories(simple-websocket-server INTERFACE ${OPENSSL_INCLUDE_D
 # If Simple-WebSocket-Server is not a sub-project:
 message("source dir: ${CMAKE_SOURCE_DIR}, current dir: ${CMAKE_CURRENT_SOURCE_DIR}")
 
-add_executable(ws_examples ws_examples.cpp)
-target_link_libraries(ws_examples simple-websocket-server)
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/bin)
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/bin)
+
+#add_executable(ws_examples ws_examples.cpp)
+#target_link_libraries(ws_examples simple-websocket-server)
 
 add_executable(ws_server ws_server.cpp)
 target_link_libraries(ws_server simple-websocket-server)
@@ -90,9 +94,9 @@ target_link_libraries(ws_server simple-websocket-server)
 add_executable(ws_client ws_client.cpp timing_helper.hpp)
 target_link_libraries(ws_client simple-websocket-server)
 
-find_package(Boost 1.54.0 COMPONENTS system thread filesystem REQUIRED)
-target_link_libraries(ws_examples ${Boost_LIBRARIES})
-target_include_directories(ws_examples PRIVATE ${Boost_INCLUDE_DIR})
+#find_package(Boost 1.54.0 COMPONENTS system thread filesystem REQUIRED)
+#target_link_libraries(ws_examples ${Boost_LIBRARIES})
+#target_include_directories(ws_examples PRIVATE ${Boost_INCLUDE_DIR})
 
 if(OPENSSL_FOUND)
     add_executable(wss_examples wss_examples.cpp)
