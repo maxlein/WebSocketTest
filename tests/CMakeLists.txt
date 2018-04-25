@@ -3,12 +3,14 @@ if(NOT MSVC)
 
     add_executable(parse_test parse_test.cpp)
     target_link_libraries(parse_test simple-websocket-server)
-    add_test(parse_test parse_test)
+    add_test(parse_test parse_test )
 endif()
+
+message("unit test output dir: ${UNIT_TEST_BIN_OUTPUT_DIR}")
 
 add_executable(crypto_test crypto_test.cpp)
 target_link_libraries(crypto_test simple-websocket-server)
-add_test(crypto_test crypto_test)
+add_test( crypto_test crypto_test)
 
 #add_executable(io_test io_test.cpp)
 #target_link_libraries(io_test simple-websocket-server)

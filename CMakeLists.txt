@@ -84,6 +84,7 @@ message("source dir: ${CMAKE_SOURCE_DIR}, current dir: ${CMAKE_CURRENT_SOURCE_DI
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/bin)
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/bin)
+set (UNIT_TEST_BIN_OUTPUT_DIR ${CMAKE_BINARY_DIR}/tests)
 
 #add_executable(ws_examples ws_examples.cpp)
 #target_link_libraries(ws_examples simple-websocket-server)
