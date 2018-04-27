@@ -25,12 +25,12 @@ pipeline {
 
       }
     }
-    //stage('Test') {
-    //  steps {
-    //    sh ' cd build && tests/testfoo --gtest_output="xml:testresults.xml" && mkdir reports && mv testresults.xml reports/ '
-    //    echo 'ls: $(ls)'
-    //  }
-    //}
+    stage('Test') {
+      steps {
+        sh ' cd build && tests/testfoo --gtest_output="xml:testresults.xml" && mkdir reports && mv testresults.xml reports/ '
+        echo 'ls: $(ls)'
+      }
+    }
     stage('Artifact') {
       parallel {
         stage('Artifact') {
