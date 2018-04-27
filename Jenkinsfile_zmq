@@ -27,7 +27,7 @@ pipeline {
     }
     //stage('Test') {
     //  steps {
-    //    sh ' cd build && tests/testfoo --gtest_output="xml:testresults.xml" && mkdir reports && mv testresults.xml reports/ '
+    //    sh ' cd build && tests/testfoo --gtest_output="xml:testresults.xml" && mkdir -p reports && mv testresults.xml reports/ '
     //    echo 'ls: $(ls)'
     //  }
     //}
@@ -41,8 +41,7 @@ pipeline {
         }
         stage('Code Analysis') {
           steps {
-            sh '''cppcheck --xml --xml-version=2 . 2> build/reports/cppcheck.xml
-'''
+            sh 'mkdir -p build/reports && ''cppcheck --xml --xml-version=2 . 2> build/reports/cppcheck.xml'''
           }
         }
       }
