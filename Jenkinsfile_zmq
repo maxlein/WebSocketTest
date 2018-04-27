@@ -53,7 +53,7 @@ pipeline {
                 thresholds: [
                     [$class: 'SkippedThreshold', failureThreshold: '0'],
                     [$class: 'FailedThreshold', failureThreshold: '0']],
-                tools: [[$class: 'CPPUnitType', pattern: 'build/reports/*.xml']]])
+                tools: [[$class: 'CppUnitJunitHudsonTestType', pattern: 'build/reports/*.xml']]])
         }
   }
 }
