@@ -41,7 +41,7 @@ pipeline {
         }
         stage('Code Analysis') {
           steps {
-            sh 'mkdir -p build/reports && ''cppcheck --xml --xml-version=2 . 2> build/reports/cppcheck.xml'''
+            sh 'mkdir -p build/reports && cppcheck --xml --xml-version=2 . 2> build/reports/cppcheck.xml'
           }
         }
       }
